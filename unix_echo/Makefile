@@ -27,4 +27,4 @@ $(objects2):%.o:%.c
 .PHONY:clean
 	
 clean:
-	rm -rf *.o $(target)
+	rm -rf *.o $(target1) $(target2)
