@@ -2,7 +2,7 @@
 #define _ARRAY_HEAP_H
 
 typedef struct{
-	void *data;
+	void **data;
 	int index;
 	int length;
 }array;
