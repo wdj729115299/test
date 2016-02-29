@@ -18,7 +18,7 @@ int array_init(array *arr, int size)
 
 int array_push(array *arr, void *data)
 {
-	arr->data[arr->index] = (struct sock_ev_client*)data;
+	((unsigned long*)arr->data)[arr->index] = (unsigned long)data;
 	arr->index++;
 	if(arr->index >= arr->length){
 		if(array_grow(arr, arr->length * 2) < 0){
@@ -49,7 +49,7 @@ void array_free(array *arr, void (*free)(void *))
 {
 	int i;
 	for(i = 0; i < arr->index; i +=1){
-		free(arr->data[i]);
+		free((void*)((unsigned long*)arr->data)[i]);
 	}
 	free(arr->data);
 	arr->index = 1;

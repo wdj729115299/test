@@ -77,7 +77,7 @@ static void server_cb(struct ev_loop *loop, ev_io *w, int revents)
 		puts("accept a client");
 		client = client_new(client_fd);
 		client->server = server;
-		client->index = array_push(&server->clients, client);
+		client->index = array_push(&server->clients, (void*)client);
 		ev_io_start(loop, &client->eio);
 	}
 }
