@@ -96,7 +96,7 @@ static void connection_new(void)
 	remote.sin_addr.s_addr = inet_addr("200.200.79.142");
 
 	if(connect(remote_fd, (struct sockaddr*)&remote, sizeof(remote)) < 0){
-		printf("connect server failed.\n");
+		perror("connected server failed.\n");
 		return;
 	}
 	

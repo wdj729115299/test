@@ -109,6 +109,8 @@ static int server_init(struct sock_ev_serv *server, int max_queue)
 	server->fd = unix_socket_init(&server->addr_in, max_queue);
 	server->socket_len = sizeof(struct sockaddr_in);
 
+	array_init(&server->clients, 128);
+
 	if(bind(server->fd, (struct sockaddr*)&server->addr_in, server->socket_len) < 0){
 		printf("bind server socket failed.\n");
 		exit(EXIT_FAILURE);
