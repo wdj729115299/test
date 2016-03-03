@@ -19,9 +19,8 @@ static void client_cb(struct ev_loop *loop, ev_io *w, int revents)
 	int n;
 	
 	struct sock_ev_client *client = (struct sock_ev_client*)w;
-	char str[100] = ".\0";
+	char str[100] = {0};
 
-	printf("[r]");
 	n = recv(client->fd, str, 100, 0);
 	if(n <= 0){
 		if(n == 0){
